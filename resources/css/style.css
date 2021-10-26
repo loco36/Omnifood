@@ -1,0 +1,586 @@
+/* 
+	Orange color: #e67e22
+*/
+
+/*------------------------------------------------------------*/
+/*Basic Setup*/
+/*------------------------------------------------------------*/
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	background-color: #fff;
+	color: #555;
+	font-family: 'Lato', 'Arial', sans-serif;
+	font-weight: 300;
+	font-size: 20px; /*adjust this to change the page font sizes */
+	/*text-rendering: optimizeLegibility;*/
+}
+
+/*new class to clear the floats*/
+.clearfix {zoom: 1}
+.clearfix:after { /*clear the float after an element*/ /*add class after ul because the child elements of ul are the ones who have the float property. If the parent has the clearfix property the float will be cleared.*/
+	content: '.';
+	clear: both;
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+
+/*------------------------------------------------------------*/
+/*Reusable components*/
+/*------------------------------------------------------------*/
+
+.row { /*Use the grid.css file*/
+	max-width: 1140px; /*only one in pixels*/
+	margin: 0 auto 0 auto; /*0 auto*/
+}
+
+section { /*use padding (and not margins) as there will later be a background colors and to ensure this we need the space inside the boxes*/
+	padding: 80px 0px;
+}
+
+.box {
+	padding: 1%;
+}
+
+/* --------Headings-------- */
+h1,
+h2,
+h3 {
+	font-weight: 300;
+	text-transform: uppercase;
+}
+
+h1 {
+	margin-top: 0;
+	margin-bottom: 20px;
+	color: #fff;
+	font-size: 240%;
+	word-spacing: 4px;
+	letter-spacing: 1px;
+}
+
+h2 {
+	font-size: 180%; /*so it's not so big*/
+	word-spacing: 2px;
+	text-align: center;
+	margin-bottom: 30px;
+	letter-spacing: 1px;
+}
+
+h3 {
+	font-size: 110%;
+	margin-bottom: 15px;
+}
+
+h2:after { /*display line by using after class. Using css only to display content.*/
+	display: block;
+	height: 2px; /*line*/
+	background-color: #e67e22;
+	content: " ";/*vital to using the after class*/
+	width: 100px;
+	margin: 0 auto; /*puts line in the center*/
+	margin-top: 30px; /*same distance as above*/
+	
+}
+
+/* --------Paragraphs-------- */
+
+.long-copy {
+	line-height: 145%; /*should be between 120 and 145%*/
+	width: 70%;
+	margin-left: 15%; /*the remaining margin is distributed 15% to both sides*/
+}
+
+.box p {
+	font-size: 90%;
+	line-height: 145%;
+}
+
+
+/* --------Icons-------- */
+
+.icon-big {
+	font-size: 320%;/*font is used for icons*/
+	display: block;
+	color: #e67e22;
+	margin-bottom: 10px;
+}
+
+.icon-small {
+	display: inline-block;
+	width: 30px;
+	text-align: center;
+	color: #e67e22;
+	font-size: 120%;
+	margin-right: 10px;
+	line-height: 120%; /*aligns icons with text*/
+	vertical-align: middle; /*aligns icons with text*/
+	margin-top: -2px; /*aligns icons with text*/
+}
+
+/* --------Links-------- */
+a:link,
+a:visited {
+	color: #e67e22;
+	text-decoration: none;
+	padding-bottom: 2px;
+	border-bottom: 1px solid #e67e22;
+	transition: border-bottom 0.2s, color 0.2s;
+}
+
+a:hover,
+a:active {
+	color: #555;
+	border-bottom: 2px solid transparent;
+}
+
+/* --------Buttons-------- */
+.btn:link,
+.btn:visited,
+input[type=submit] {
+	display: inline-block; /*inline block elements will have padding and margin but wont force a line break */
+	padding: 10px 30px; /*10 30 10 30*/
+	font-weight: 300;
+	text-decoration: none;
+	border-radius: 200px;
+	/* color: #fff; */
+	transition: background-color 0.2s, border 0.2s, color 0.2s;
+}
+
+.btn-full:link,
+.btn-full:visited,
+input[type=submit] {
+	background-color: #e67e22;
+	border: 1px solid #e67e22;
+	color: #fff;
+	margin-right: 15px;	
+}
+
+.btn-ghost:link,
+.btn-ghost:visited {
+	border: 1px solid #e67e22;
+	color: #e67e22;
+}
+
+.btn:hover,
+.btn:active,
+input[type=submit]:hover,
+input[type=submit]:active { 
+	background-color: #cf6d17; /*use 0to25.com*/
+}
+
+
+/*border and font color for ghost button change from light orange to dark orange on hover and active*/
+.btn-full:hover,
+.btn-full:active {
+	border: 1px solid #cf6d17;
+}
+
+.btn-ghost:hover,
+.btn-ghost:active {
+	border: 1px solid #cf6d17;
+	color: #fff;
+}
+/**/
+
+/*------------------------------------------------------------*/
+/*Header*/
+/*------------------------------------------------------------*/
+
+header {
+	background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(img/hero.jpg);
+	background-size: cover; 
+	background-position: center;
+	height: 100vh; /*height of the screen*/
+	background-attachment: fixed;
+}
+
+.hero-text-box {
+	position: absolute;
+	width: 1140px; /*width of the row. Look like a row but will be absolutely positioned*/
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%); /*transform half of its height up and half of its width left*/
+}
+.logo {
+	height: 100px;
+	width: auto; /*determined automatically*/
+	float: left;
+	margin-top: 20px;
+	
+}
+.main-nav {
+	float: right;
+	list-style: none; /*takes away bullet point*/
+	margin-top: 55px;
+}
+
+.main-nav li {
+	display: inline-block; /*allows side by side display*/
+	margin-left: 40px;
+}
+.main-nav li a:link, /*this is the link and visited states*/
+.main-nav li a:visited {
+	padding: 8px 0px; /*padding left and right 8px, top and bottom 0px */
+	color: #fff;
+	text-decoration: none; /*takes away underline*/
+	text-transform: uppercase;
+	font-size: 90%; /*18px = 90% of 20px*/
+	border-bottom: 2px solid transparent; /*so that the border exists before hover occurs*/
+	transition: border-bottom 0.2s; 
+}
+
+.main-nav li a:hover, /*this is the hover and active states*/
+.main-nav li a:active {
+	border-bottom: 2px solid #e67e22;
+}
+
+/*------------------------------------------------------------*/
+/*Features*/
+/*------------------------------------------------------------*/
+.section-features,
+.long-copy {
+	padding-bottom: 30px; /*distance between paragraph and icons*/
+}
+
+/*------------------------------------------------------------*/
+/*Meals*/
+/*------------------------------------------------------------*/
+
+.section-meals {
+	padding: 0px;
+}
+
+.meals-showcase {
+	list-style: none;
+	width: 100%;
+}
+
+.meals-showcase li {
+	display: block;
+	float: left;
+	width:25%;
+}
+
+.meal-photo {
+	width: 100%; /*has the same width of its parent which is li*/
+	margin: 0; /*already done in *{} */
+	overflow: hidden;
+	background-color: #000;
+}
+
+.meal-photo img {
+	opacity: 0.7; /*makes the photo see through to the white behind*/
+	width: 100%;
+	height: auto;
+	transform: scale(1.15); /*instead of the image being 100% its 115%*/
+	transition: transform 0.5s, opacity 0.5s;
+}
+
+.meal-photo img:hover {
+	opacity: 1;
+	transform: scale(1.03);
+}
+
+
+
+/*------------------------------------------------------------*/
+/*How it works section*/
+/*------------------------------------------------------------*/
+
+/*.steps-box { Ieft box and the right box
+	margin-top: 30px; between h2 and boxes
+}*/
+
+.section-steps {
+	background-color: #f4f4f4;
+}
+
+.steps-box:first-child {/*selects first box*/
+	text-align: right; /*works for all inline or inline block elements and the image is an inline block element*/
+	padding-right: 3%; /*makes the website responsive and fluid instead of using rigid pixles*/
+	margin-top: 30px; /*first one 30px*/
+}
+
+.steps-box:last-child {/*selects second class*/
+	padding-left: 3%;
+	margin-top: 70px;/*second one 70px*/
+}
+
+.app-screen {
+	width: 40%;
+}
+
+.works-step {
+	margin-bottom: 50px; /*all but last has 50px;*/
+}
+
+.works-steps:last-of-type { /*add a space between the last work step and the imgs - similar to last child*/
+	margin-bottom: 80px;
+}
+
+.works-step div {
+	color: #e67e22;
+	border: 2px solid #e67e22;
+	display: inline-block;
+	border-radius: 50%;
+	height: 55px;
+	width: 55px;
+	text-align: center;
+	padding: 5px;
+	float: left;
+	font-size: 150%;
+	margin-right: 25px;
+}
+
+/*doing this because there was a underline of a link from above*/
+
+.btn-app:link,
+ .btn-app:visited {
+	 border: 0;
+ }
+
+
+
+.btn-app img {
+	height: 50px;/*looks the same*/
+	width: auto;
+	margin-right: 10px;
+}
+/*have to clear the floats*/
+
+
+/*------------------------------------------------------------*/
+/*Cities*/
+/*------------------------------------------------------------*/
+
+.box img {
+	width: 100%; /*width as wide as box*/
+	height: auto;
+	margin-bottom: 15px;
+}
+
+.city-feature {
+	margin-bottom: 5px; /*between icons / words*/
+}
+
+/*------------------------------------------------------------*/
+/*Testimonials*/
+/*------------------------------------------------------------*/
+
+.section-testimonials {
+	background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(img/back-customers.jpg); /*the linear gradient puts black at the top and bottom and uses the transparancy option to see the other background image*/
+	background-size: cover;
+	color: #fff;
+	background-attachment: fixed;
+}
+
+blockquote:before {
+	content: "\201C"; /*using iso from glyphics. Need to find css content for "*/
+	font-size: 500%;
+	display: block;
+	position: absolute; /*whenever we have an element as an absolute position we have to make sure it's parent is in relative position*/
+	top: -5px;
+	left: -5px;
+	
+}
+
+blockquote {
+	padding: 2%;
+	font-style: italic; /*can use this as it was included in the google fonts options*/
+	line-height: 145%;
+	position: relative;
+	margin-top: 40px;
+}
+
+cite {
+	font-size: 90%;
+	margin-top: 25px;
+	display: block;
+}
+
+cite img {
+	height: 45px;
+	border-radius: 50%;
+	margin-right: 10px;
+	vertical-align: middle;
+}
+
+/*------------------------------------------------------------*/
+/*Sign up*/
+/*------------------------------------------------------------*/
+
+.section-plans {
+	background-color: #f4f4f4;
+	
+}
+
+.plan-box {
+	background-color: #fff;
+	border-radius: 5px;/*rounded corners*/
+	width: 90%;/*of container*/
+	margin-left: 5%;/*there was a total of 10% left so 5% is half that total*/
+	/*x axis offset, y axis offset, blur and color*/
+	box-shadow: 0 2px 2px #efefef;
+}
+
+.plan-box div {
+	padding: 15px;
+	border-bottom: 1px solid #e8e8e8;
+}
+
+.plan-box div:first-child {
+	background-color: #fcfcfc; /*subtle color change from background*/
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+.plan-box div:last-child {
+	text-align: center; /*for buttons*/
+	border: 0; /*for grey line above (and below?) button*/
+	
+}
+
+.plan-price {
+	font-size: 300%;
+	margin-bottom: 10px;
+	font-weight: 100; 
+	color: #e67e22;
+}
+
+.plan-price span {
+	font-size: 30%;/*30% of 300% and not the initial 30px*/
+	font-weight: 300;
+}
+.plan-price-meal {
+	font-size: 80%;
+}
+
+.plan-box ul {
+	list-style: none;
+	
+}
+
+.plan-box ul li {
+	padding: 5px 0; 
+}
+
+/*------------------------------------------------------------*/
+/*Contact Form*/
+/*------------------------------------------------------------*/
+
+.contact-form {
+	width: 60%;
+	margin: 0 auto; /*puts 20% margin either side*/
+}
+
+input[type=text], /*select all elements with the type equaling text*/
+input[type=email],
+select,
+textarea {
+	width: 100%;
+	padding: 7px;
+	border-radius: 3px;
+	border: 1px solid #ccc;
+	
+}
+
+textarea {
+	height: 100px;
+}
+
+input[type=checkbox] {
+	margin: 10px 5px 10px 0;
+}
+
+*:focus {outline: none;}
+
+/*------------------------------------------------------------*/
+/*Footer*/
+/*------------------------------------------------------------*/
+
+footer {
+	background-color: #333;
+	padding: 50px;
+	font-size: 80%;
+	
+}
+
+.footer-nav {
+	list-style: none;
+	float: left;
+	
+}
+
+.social-links {
+	list-style: none;
+	float: right;
+}
+
+.footer-nav li,
+.social-links li {
+	display: inline-block;
+	margin-right: 20px;
+}
+
+.footer-nav li:last-child,
+.social-links li:last-child {
+	margin-right: 0;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited,
+.social-links li a:link,
+.social-links li a:visited {
+	text-decoration: none;
+	border: 0;
+	color: #888;
+	transition: color 0.2s;
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active {
+	color: #ddd;
+	
+}
+
+.social-links li a:link,
+.social-links li a:visited {
+	font-size: 160%;
+}
+
+.facebook,
+.twitter,
+.google,
+.instagram {
+	transition: color 0.2s;
+}
+
+.facebook:hover {
+	color: #3b5998;
+}
+.twitter:hover {
+	color: #00aced;
+}
+
+.google:hover {
+	color: #dd4b39;
+}
+
+.instagram:hover {
+	color: #517fa4;
+}
+
+
+footer p {
+	color: #888;
+	text-align: center;
+	font-size: 90%;
+	margin-top: 20px;
+	
+}
